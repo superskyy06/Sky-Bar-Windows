@@ -1,0 +1,71 @@
+﻿<Window x:Class="SkyBar.UI.Dock.DockWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Sky Bar"
+        Width="960" Height="115"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="{x:Null}"
+        Topmost="True"
+        ShowInTaskbar="False"
+        ResizeMode="NoResize"
+        Loaded="Window_Loaded">
+
+    <Window.Resources>
+        <DataTemplate x:Key="DockAppItemTemplate">
+            <Grid Margin="5,0" VerticalAlignment="Bottom" Cursor="Hand"
+                  ToolTip="{Binding Name}"
+                  PreviewMouseLeftButtonDown="DockItem_PreviewMouseLeftButtonDown"
+                  PreviewMouseMove="DockItem_PreviewMouseMove"
+                  MouseLeftButtonUp="DockItem_MouseLeftButtonUp"
+                  MouseRightButtonUp="DockItem_MouseRightButtonUp">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" Width="{Binding CurrentSize}" Height="{Binding CurrentSize}"
+                        CornerRadius="12" Background="#1AFFFFFF" BorderBrush="#26FFFFFF" BorderThickness="1" Padding="6">
+                    <Image Source="{Binding AppIcon}" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality"/>
+                </Border>
+                <Ellipse Grid.Row="1" Width="4" Height="4" Fill="{DynamicResource MacPrimaryTextBrush}" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                    <Ellipse.Style>
+                        <Style TargetType="Ellipse">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsRunning}" Value="True">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Ellipse.Style>
+                </Ellipse>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10">
+        <Border x:Name="DockGlassBorder" CornerRadius="22"
+                Background="{DynamicResource NotchSurfaceBrush}" BorderBrush="{DynamicResource NotchBorderBrush}"
+                BorderThickness="1" Padding="12,8,12,6" AllowDrop="True"
+                DragOver="DockGlassBorder_DragOver" Drop="DockGlassBorder_Drop"
+                MouseMove="DockGlassBorder_MouseMove" MouseLeave="DockGlassBorder_MouseLeave">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="22" ShadowDepth="6" Direction="270" Color="#000000" Opacity="0.45"/>
+            </Border.Effect>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
+                <ItemsControl x:Name="PinnedItemsControl" ItemsSource="{Binding PinnedApps}" ItemTemplate="{StaticResource DockAppItemTemplate}">
+                    <ItemsControl.ItemsPanel><ItemsPanelTemplate><StackPanel Orientation="Horizontal" VerticalAlignment="Bottom"/></ItemsPanelTemplate></ItemsControl.ItemsPanel>
+                </ItemsControl>
+                <Rectangle Width="1" Height="36" Fill="{DynamicResource NotchBorderBrush}" Margin="8,0,8,6" VerticalAlignment="Bottom"/>
+                <ItemsControl x:Name="ActiveItemsControl" ItemsSource="{Binding ActiveUnpinnedApps}" ItemTemplate="{StaticResource DockAppItemTemplate}">
+                    <ItemsControl.ItemsPanel><ItemsPanelTemplate><StackPanel Orientation="Horizontal" VerticalAlignment="Bottom"/></ItemsPanelTemplate></ItemsControl.ItemsPanel>
+                </ItemsControl>
+                <Border Width="48" Height="48" CornerRadius="12" Margin="6,0,0,6" Background="#1AFFFFFF" BorderBrush="#26FFFFFF" BorderThickness="1"
+                        Cursor="Hand" ToolTip="Pengaturan Sky Bar" MouseLeftButtonUp="SettingsButton_MouseLeftButtonUp">
+                    <Path Data="M12,8 A4,4 0 1,0 12,16 A4,4 0 1,0 12,8 M4,12 L6,12 M18,12 L20,12 M12,4 L12,6 M12,18 L12,20"
+                          Stroke="{DynamicResource MacPrimaryTextBrush}" StrokeThickness="1.8" Stretch="Uniform" Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

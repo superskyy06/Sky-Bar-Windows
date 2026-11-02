@@ -1,0 +1,612 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ds="clr-namespace:SkyBar.UI.DesignSystem">
+
+    <!-- ============================================================ -->
+    <!--  TIPOGRAFI                                                    -->
+    <!-- ============================================================ -->
+    <FontFamily x:Key="MacPrimaryFont">SF Pro Text, Inter, Segoe UI Variable Text, Segoe UI</FontFamily>
+    <FontFamily x:Key="MacDisplayFont">SF Pro Display, Inter, Segoe UI Variable Display, Segoe UI</FontFamily>
+    <!-- Ikon vektor bawaan Windows (tajam di semua DPI) -->
+    <FontFamily x:Key="MacIconFont">Segoe Fluent Icons, Segoe MDL2 Assets</FontFamily>
+
+    <ds:ShellIconConverter x:Key="ShellIconConverter"/>
+
+    <!-- ============================================================ -->
+    <!--  PALET NOTCH (selalu hitam pekat clean seperti MacBook asli)  -->
+    <!-- ============================================================ -->
+    <SolidColorBrush x:Key="NotchFillBrush" Color="#FF050608"/>
+    <SolidColorBrush x:Key="NotchCardBrush" Color="#FF11131A"/>
+    <SolidColorBrush x:Key="NotchCardStrokeBrush" Color="#1EFFFFFF"/>
+    <SolidColorBrush x:Key="NotchHoverBrush" Color="#22FFFFFF"/>
+    <SolidColorBrush x:Key="NotchChipBrush" Color="#1CFFFFFF"/>
+    <SolidColorBrush x:Key="NotchPrimaryTextBrush" Color="#FFF8FAFC"/>
+    <SolidColorBrush x:Key="NotchSecondaryTextBrush" Color="#FFA6B0C3"/>
+    <SolidColorBrush x:Key="NotchTertiaryTextBrush" Color="#FF727C90"/>
+
+    <!-- ============================================================ -->
+    <!--  PALET TEMA (default: gelap, ditimpa oleh ThemeEngineService) -->
+    <!-- ============================================================ -->
+    <SolidColorBrush x:Key="WindowSurfaceBrush" Color="#F71E1E20"/>
+    <SolidColorBrush x:Key="WindowStrokeBrush" Color="#26FFFFFF"/>
+    <SolidColorBrush x:Key="CardBrush" Color="#FF2A2A2D"/>
+    <SolidColorBrush x:Key="CardStrokeBrush" Color="#12FFFFFF"/>
+    <SolidColorBrush x:Key="DividerBrush" Color="#1AFFFFFF"/>
+    <SolidColorBrush x:Key="MacPrimaryTextBrush" Color="#FFF5F5F7"/>
+    <SolidColorBrush x:Key="MacSecondaryTextBrush" Color="#FF98989D"/>
+    <SolidColorBrush x:Key="ControlTrackOffBrush" Color="#FF3A3A3C"/>
+    <SolidColorBrush x:Key="ControlHoverBrush" Color="#14FFFFFF"/>
+    <SolidColorBrush x:Key="SegmentSelectedBrush" Color="#FF636366"/>
+    <SolidColorBrush x:Key="MenuSurfaceBrush" Color="#F7252528"/>
+    <SolidColorBrush x:Key="DockIndicatorBrush" Color="#D9F5F5F7"/>
+    <SolidColorBrush x:Key="MacAccentBrush" Color="#FF0A84FF"/>
+    <LinearGradientBrush x:Key="DockGlassBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#C73A3A3F" Offset="0"/>
+        <GradientStop Color="#D61E1E21" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="DockStrokeBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#47FFFFFF" Offset="0"/>
+        <GradientStop Color="#14FFFFFF" Offset="1"/>
+    </LinearGradientBrush>
+
+    <!-- Kunci lama (kompatibilitas) -->
+    <SolidColorBrush x:Key="NotchSurfaceBrush" Color="#F71E1E20"/>
+    <SolidColorBrush x:Key="NotchBorderBrush" Color="#26FFFFFF"/>
+
+    <!-- ============================================================ -->
+    <!--  TEKS                                                         -->
+    <!-- ============================================================ -->
+    <Style x:Key="MacTitleTextStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource MacPrimaryFont}"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Foreground" Value="{DynamicResource MacPrimaryTextBrush}"/>
+    </Style>
+
+    <Style x:Key="MacBodyTextStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource MacPrimaryFont}"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Foreground" Value="{DynamicResource MacPrimaryTextBrush}"/>
+    </Style>
+
+    <Style x:Key="MacCaptionTextStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource MacPrimaryFont}"/>
+        <Setter Property="FontWeight" Value="Regular"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="Foreground" Value="{DynamicResource MacSecondaryTextBrush}"/>
+    </Style>
+
+    <Style x:Key="NotchTitleText" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource MacPrimaryFont}"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Foreground" Value="{StaticResource NotchPrimaryTextBrush}"/>
+        <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+    </Style>
+
+    <Style x:Key="NotchBodyText" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource MacPrimaryFont}"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="{StaticResource NotchPrimaryTextBrush}"/>
+        <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+    </Style>
+
+    <Style x:Key="NotchCaptionText" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource MacPrimaryFont}"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="Foreground" Value="{StaticResource NotchSecondaryTextBrush}"/>
+        <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+    </Style>
+
+    <Style x:Key="IconGlyph" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource MacIconFont}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="TextOptions.TextRenderingMode" Value="Grayscale"/>
+    </Style>
+
+    <!-- ============================================================ -->
+    <!--  TOMBOL NOTCH                                                 -->
+    <!-- ============================================================ -->
+    <Style x:Key="NotchIconButton" TargetType="Button">
+        <Setter Property="Foreground" Value="{StaticResource NotchPrimaryTextBrush}"/>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Background="Transparent" RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <ScaleTransform x:Name="PressScale"/>
+                        </Grid.RenderTransform>
+                        <Border x:Name="HoverFill" CornerRadius="999" Background="{StaticResource NotchHoverBrush}" Opacity="0"/>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="HoverFill" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.14"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="HoverFill" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.22"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PressScale" Storyboard.TargetProperty="ScaleX" To="0.86" Duration="0:0:0.08"/>
+                                        <DoubleAnimation Storyboard.TargetName="PressScale" Storyboard.TargetProperty="ScaleY" To="0.86" Duration="0:0:0.08"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PressScale" Storyboard.TargetProperty="ScaleX" To="1" Duration="0:0:0.35">
+                                            <DoubleAnimation.EasingFunction><BackEase EasingMode="EaseOut" Amplitude="0.5"/></DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="PressScale" Storyboard.TargetProperty="ScaleY" To="1" Duration="0:0:0.35">
+                                            <DoubleAnimation.EasingFunction><BackEase EasingMode="EaseOut" Amplitude="0.5"/></DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="NotchChipButton" TargetType="Button" BasedOn="{StaticResource NotchIconButton}">
+        <Setter Property="Width" Value="Auto"/>
+        <Setter Property="Height" Value="24"/>
+        <Setter Property="Padding" Value="10,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <ScaleTransform x:Name="PressScale"/>
+                        </Grid.RenderTransform>
+                        <Border CornerRadius="999" Background="{StaticResource NotchChipBrush}"/>
+                        <Border x:Name="HoverFill" CornerRadius="999" Background="{StaticResource NotchHoverBrush}" Opacity="0"/>
+                        <ContentPresenter Margin="{TemplateBinding Padding}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="HoverFill" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.14"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="HoverFill" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.22"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PressScale" Storyboard.TargetProperty="ScaleX" To="0.93" Duration="0:0:0.08"/>
+                                        <DoubleAnimation Storyboard.TargetName="PressScale" Storyboard.TargetProperty="ScaleY" To="0.93" Duration="0:0:0.08"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PressScale" Storyboard.TargetProperty="ScaleX" To="1" Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction><BackEase EasingMode="EaseOut" Amplitude="0.5"/></DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="PressScale" Storyboard.TargetProperty="ScaleY" To="1" Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction><BackEase EasingMode="EaseOut" Amplitude="0.5"/></DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="NotchCard" TargetType="Border">
+        <Setter Property="Background" Value="{StaticResource NotchCardBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource NotchCardStrokeBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="16"/>
+    </Style>
+
+    <!-- Item list tanpa highlight biru bawaan Windows -->
+    <Style x:Key="CleanListBoxItem" TargetType="ListBoxItem">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <ContentPresenter/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Baris yang bisa di-hover (clipboard, shelf, dll) -->
+    <Style x:Key="NotchHoverRow" TargetType="Border">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource NotchHoverBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- ============================================================ -->
+    <!--  KONTROL PENGATURAN (gaya System Settings macOS)              -->
+    <!-- ============================================================ -->
+    <Style x:Key="SettingsCard" TargetType="Border">
+        <Setter Property="Background" Value="{DynamicResource CardBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="12"/>
+        <Setter Property="Padding" Value="14,4"/>
+    </Style>
+
+    <Style x:Key="SettingsSectionHeader" TargetType="TextBlock" BasedOn="{StaticResource MacCaptionTextStyle}">
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Margin" Value="4,0,0,6"/>
+    </Style>
+
+    <!-- Toggle switch ala macOS -->
+    <Style x:Key="MacToggleSwitch" TargetType="CheckBox">
+        <Setter Property="Foreground" Value="{DynamicResource MacPrimaryTextBrush}"/>
+        <Setter Property="FontFamily" Value="{StaticResource MacPrimaryFont}"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Padding" Value="0,10"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <Grid Background="Transparent" Margin="{TemplateBinding Padding}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <ContentPresenter VerticalAlignment="Center" Margin="0,0,14,0">
+                            <ContentPresenter.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap"/>
+                                </Style>
+                            </ContentPresenter.Resources>
+                        </ContentPresenter>
+                        <Grid Grid.Column="1" Width="38" Height="22" VerticalAlignment="Center">
+                            <Border CornerRadius="11" Background="{DynamicResource ControlTrackOffBrush}"/>
+                            <Border x:Name="OnTrack" CornerRadius="11" Background="{DynamicResource MacAccentBrush}" Opacity="0"/>
+                            <Ellipse Width="18" Height="18" Fill="White" HorizontalAlignment="Left" Margin="2,0,0,0">
+                                <Ellipse.RenderTransform>
+                                    <TranslateTransform x:Name="KnobShift"/>
+                                </Ellipse.RenderTransform>
+                                <Ellipse.Effect>
+                                    <DropShadowEffect BlurRadius="4" ShadowDepth="1" Direction="270" Opacity="0.28"/>
+                                </Ellipse.Effect>
+                            </Ellipse>
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="KnobShift" Storyboard.TargetProperty="X" To="16" Duration="0:0:0.32">
+                                            <DoubleAnimation.EasingFunction><BackEase EasingMode="EaseOut" Amplitude="0.35"/></DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="OnTrack" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="KnobShift" Storyboard.TargetProperty="X" To="0" Duration="0:0:0.32">
+                                            <DoubleAnimation.EasingFunction><BackEase EasingMode="EaseOut" Amplitude="0.35"/></DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="OnTrack" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.45"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Segmented control ala macOS -->
+    <Style x:Key="MacSegment" TargetType="RadioButton">
+        <Setter Property="Foreground" Value="{DynamicResource MacPrimaryTextBrush}"/>
+        <Setter Property="FontFamily" Value="{StaticResource MacPrimaryFont}"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Border x:Name="Bd" CornerRadius="6" Background="Transparent" Padding="10,5" Margin="2">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource ControlHoverBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource SegmentSelectedBrush}"/>
+                            <Setter TargetName="Bd" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect BlurRadius="3" ShadowDepth="1" Direction="270" Opacity="0.18"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Slider ala macOS -->
+    <Style x:Key="MacSliderFillRepeat" TargetType="RepeatButton">
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RepeatButton">
+                    <Border Height="4" CornerRadius="2" Background="{DynamicResource MacAccentBrush}"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="MacSliderEmptyRepeat" TargetType="RepeatButton">
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RepeatButton">
+                    <Border Background="Transparent"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="MacSliderThumb" TargetType="Thumb">
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Thumb">
+                    <Ellipse Width="20" Height="20" Fill="White">
+                        <Ellipse.Effect>
+                            <DropShadowEffect BlurRadius="5" ShadowDepth="1" Direction="270" Opacity="0.3"/>
+                        </Ellipse.Effect>
+                    </Ellipse>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="MacSlider" TargetType="Slider">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Slider">
+                    <Grid Height="24" Background="Transparent">
+                        <Border Height="4" CornerRadius="2" Background="{DynamicResource ControlTrackOffBrush}" VerticalAlignment="Center" Margin="2,0"/>
+                        <Track x:Name="PART_Track">
+                            <Track.DecreaseRepeatButton>
+                                <RepeatButton Command="Slider.DecreaseLarge" Style="{StaticResource MacSliderFillRepeat}"/>
+                            </Track.DecreaseRepeatButton>
+                            <Track.IncreaseRepeatButton>
+                                <RepeatButton Command="Slider.IncreaseLarge" Style="{StaticResource MacSliderEmptyRepeat}"/>
+                            </Track.IncreaseRepeatButton>
+                            <Track.Thumb>
+                                <Thumb Style="{StaticResource MacSliderThumb}"/>
+                            </Track.Thumb>
+                        </Track>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Tombol utama (aksen) -->
+    <Style x:Key="MacPrimaryButton" TargetType="Button">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontFamily" Value="{StaticResource MacPrimaryFont}"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="Padding" Value="18,0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Background" Value="{DynamicResource MacAccentBrush}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <ScaleTransform x:Name="PressScale"/>
+                        </Grid.RenderTransform>
+                        <Border CornerRadius="8" Background="{TemplateBinding Background}"/>
+                        <Border x:Name="Sheen" CornerRadius="8" Background="White" Opacity="0"/>
+                        <ContentPresenter Margin="{TemplateBinding Padding}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Sheen" Property="Opacity" Value="0.1"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Sheen" Property="Opacity" Value="0"/>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PressScale" Storyboard.TargetProperty="ScaleX" To="0.97" Duration="0:0:0.08"/>
+                                        <DoubleAnimation Storyboard.TargetName="PressScale" Storyboard.TargetProperty="ScaleY" To="0.97" Duration="0:0:0.08"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PressScale" Storyboard.TargetProperty="ScaleX" To="1" Duration="0:0:0.18"/>
+                                        <DoubleAnimation Storyboard.TargetName="PressScale" Storyboard.TargetProperty="ScaleY" To="1" Duration="0:0:0.18"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="MacSecondaryButton" TargetType="Button" BasedOn="{StaticResource MacPrimaryButton}">
+        <Setter Property="Foreground" Value="{DynamicResource MacPrimaryTextBrush}"/>
+        <Setter Property="FontWeight" Value="Regular"/>
+        <Setter Property="Background" Value="{DynamicResource ControlTrackOffBrush}"/>
+    </Style>
+
+    <!-- Tombol "traffic light" macOS -->
+    <Style x:Key="TrafficLightButton" TargetType="Button">
+        <Setter Property="Width" Value="12"/>
+        <Setter Property="Height" Value="12"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Ellipse Fill="{TemplateBinding Background}" Stroke="#26000000" StrokeThickness="0.5"/>
+                        <TextBlock x:Name="Glyph" Text="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}" FontFamily="{StaticResource MacIconFont}"
+                                   FontSize="6.5" Foreground="#A6000000" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Glyph" Property="Opacity" Value="1"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ============================================================ -->
+    <!--  TOOLTIP & CONTEXT MENU (implisit)                            -->
+    <!-- ============================================================ -->
+    <Style TargetType="ToolTip">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="HasDropShadow" Value="False"/>
+        <Setter Property="Foreground" Value="{DynamicResource MacPrimaryTextBrush}"/>
+        <Setter Property="FontFamily" Value="{StaticResource MacPrimaryFont}"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToolTip">
+                    <Grid Margin="10">
+                        <Border CornerRadius="7" Background="{DynamicResource MenuSurfaceBrush}"
+                                BorderBrush="{DynamicResource WindowStrokeBrush}" BorderThickness="1">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="12" ShadowDepth="2" Direction="270" Opacity="0.3"/>
+                            </Border.Effect>
+                        </Border>
+                        <ContentPresenter Margin="10,5"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="ContextMenu">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="HasDropShadow" Value="False"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Foreground" Value="{DynamicResource MacPrimaryTextBrush}"/>
+        <Setter Property="FontFamily" Value="{StaticResource MacPrimaryFont}"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContextMenu">
+                    <Grid Margin="12">
+                        <Border CornerRadius="10" Background="{DynamicResource MenuSurfaceBrush}"
+                                BorderBrush="{DynamicResource WindowStrokeBrush}" BorderThickness="1">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="18" ShadowDepth="4" Direction="270" Opacity="0.35"/>
+                            </Border.Effect>
+                        </Border>
+                        <StackPanel IsItemsHost="True" Margin="5" KeyboardNavigation.DirectionalNavigation="Cycle"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="MenuItem">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Foreground" Value="{DynamicResource MacPrimaryTextBrush}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="MenuItem">
+                    <Border x:Name="Bd" CornerRadius="6" Padding="10,6" MinWidth="190" Background="Transparent">
+                        <ContentPresenter ContentSource="Header" RecognizesAccessKey="True" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsHighlighted" Value="True">
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource MacAccentBrush}"/>
+                            <Setter Property="Foreground" Value="White"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}" TargetType="Separator">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Separator">
+                    <Border Height="1" Margin="10,4" Background="{DynamicResource DividerBrush}"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
